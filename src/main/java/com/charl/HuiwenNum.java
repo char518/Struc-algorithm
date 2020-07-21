@@ -13,8 +13,11 @@ public class HuiwenNum {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 3, 2, 1};
-        int[] arr1 = {1, 2, 3, 1};
+        int[] arr1 = {1, 2, 3};
         Node node = buildNode(arr1);
+
+        Node node1 = reverseNode(node);
+        System.out.println(node1);
         boolean b = checkIsHuiwen(node);
         System.out.println(b);
     }
@@ -47,7 +50,7 @@ public class HuiwenNum {
         Node temp = null;
         Node pre = null;
         while (null != next) {
-            temp = next.next;
+            temp = next.next;//保存下一个节点到值
             next.next = pre;//当前节点的下个节点指向前一个节点
             pre = next;//将当前节点保存起来
             next = temp;//当前节点向后移动
@@ -61,6 +64,19 @@ public class HuiwenNum {
             node = node.next;
         }
         return true;
+    }
+
+    public static Node reverseNode(Node node) {
+        Node temp = null;
+        Node newNode = null;
+        while (node != null) {
+            temp = node.next;
+            //对新链表做头插法
+            node.next = newNode;
+            newNode = node;
+            node = temp;
+        }
+        return newNode;
     }
 
 

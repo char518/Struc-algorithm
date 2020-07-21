@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class TreeSort {
 
-    Tree tree;
+    TwoWayTree tree;
 
     public TreeSort() {
         tree = init();
@@ -16,23 +16,23 @@ public class TreeSort {
 
     public static void main(String[] args) {
         TreeSort treeSort = new TreeSort();
-        Tree tree = treeSort.tree;
+        TwoWayTree tree = treeSort.tree;
         DFS(tree);
         DFS1(tree);
         System.out.println();
         BFS(tree);
     }
 
-    public Tree init() {
-        Tree tree1 = new Tree(1);
-        Tree tree2 = new Tree(2);
-        Tree tree3 = new Tree(3);
-        Tree tree4 = new Tree(4);
-        Tree tree5 = new Tree(5);
-        Tree tree6 = new Tree(6);
-        Tree tree7 = new Tree(7);
-        Tree tree8 = new Tree(8);
-        Tree tree9 = new Tree(9);
+    public TwoWayTree init() {
+        TwoWayTree tree1 = new TwoWayTree(1);
+        TwoWayTree tree2 = new TwoWayTree(2);
+        TwoWayTree tree3 = new TwoWayTree(3);
+        TwoWayTree tree4 = new TwoWayTree(4);
+        TwoWayTree tree5 = new TwoWayTree(5);
+        TwoWayTree tree6 = new TwoWayTree(6);
+        TwoWayTree tree7 = new TwoWayTree(7);
+        TwoWayTree tree8 = new TwoWayTree(8);
+        TwoWayTree tree9 = new TwoWayTree(9);
         tree1.setLeft(tree2);
         tree1.setRight(tree3);
         tree2.setLeft(tree4);
@@ -50,11 +50,11 @@ public class TreeSort {
      *
      * @param tree
      */
-    public static void DFS(Tree tree) {
-        Stack<Tree> stack = new Stack<Tree>();
+    public static void DFS(TwoWayTree tree) {
+        Stack<TwoWayTree> stack = new Stack<TwoWayTree>();
         stack.push(tree);
         while (!stack.isEmpty()) {
-            Tree pop = stack.pop();
+            TwoWayTree pop = stack.pop();
             System.out.print(pop.getData());
             if (null != pop.getRight()) {
                 stack.push(pop.getRight());
@@ -71,7 +71,7 @@ public class TreeSort {
      *
      * @param tree
      */
-    public static void DFS1(Tree tree) {
+    public static void DFS1(TwoWayTree tree) {
         if (null == tree) {
             return;
         }
@@ -85,11 +85,11 @@ public class TreeSort {
      *
      * @param tree
      */
-    public static void BFS(Tree tree) {
-        Queue<Tree> queue = new LinkedList<Tree>();
+    public static void BFS(TwoWayTree tree) {
+        Queue<TwoWayTree> queue = new LinkedList<TwoWayTree>();
         queue.add(tree);
         while (!queue.isEmpty()) {
-            Tree poll = queue.poll();
+            TwoWayTree poll = queue.poll();
             System.out.print(poll.getData());
             if (null != poll.getLeft()) {
                 queue.add(poll.getLeft());
@@ -101,16 +101,22 @@ public class TreeSort {
         System.out.println();
     }
 
-    public static void BFS1(Tree tree, int level, List<List<Tree>> list) {
-        if (null == tree) {
-            return;
+    /**
+     * 翻转单链表
+     *
+     * @param oneWayTree
+     */
+    public static OneWayTree reverseTree(OneWayTree oneWayTree) {
+        OneWayTree pre = null;
+        OneWayTree temp = null;
+        while (Objects.nonNull(oneWayTree)) {
+            temp = oneWayTree.next;
+            //头插法
+            oneWayTree.next = pre;
+            pre = oneWayTree;
+            oneWayTree = temp;
         }
-        if (level == 0) {
-            list.set(0, Arrays.asList(tree));
-        } else {
-
-        }
-
+        return pre;
     }
 
 

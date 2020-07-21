@@ -4,15 +4,15 @@ package com.charl.tree;
  * Create by charl
  * Date 2020/7/3 10:48
  */
-public class Tree {
+public class TwoWayTree {
 
     private int data;
 
-    private Tree left;
+    private TwoWayTree left;
 
-    private Tree right;
+    private TwoWayTree right;
 
-    public Tree(int data) {
+    public TwoWayTree(int data) {
         this.data = data;
     }
 
@@ -24,19 +24,19 @@ public class Tree {
         this.data = data;
     }
 
-    public Tree getLeft() {
+    public TwoWayTree getLeft() {
         return left;
     }
 
-    public void setLeft(Tree left) {
+    public void setLeft(TwoWayTree left) {
         this.left = left;
     }
 
-    public Tree getRight() {
+    public TwoWayTree getRight() {
         return right;
     }
 
-    public void setRight(Tree right) {
+    public void setRight(TwoWayTree right) {
         this.right = right;
     }
 }
